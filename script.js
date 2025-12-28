@@ -112,3 +112,25 @@ window.addEventListener("scroll", () => {
     ambient.style.transform = `translateY(${offset * (index + 1)}px)`;
   });
 });
+/* ================= PROFILE CARD PARALLAX ================= */
+
+const profileCard = document.getElementById("profileCard");
+
+if (profileCard) {
+  document.addEventListener("mousemove", (e) => {
+    const { innerWidth, innerHeight } = window;
+
+    const x = (e.clientX / innerWidth - 0.5) * 12;
+    const y = (e.clientY / innerHeight - 0.5) * 12;
+
+    profileCard.style.transform = `
+      rotateY(${x}deg)
+      rotateX(${-y}deg)
+      translateZ(10px)
+    `;
+  });
+
+  document.addEventListener("mouseleave", () => {
+    profileCard.style.transform = "none";
+  });
+}
